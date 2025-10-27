@@ -1,1 +1,33 @@
-# eredetibiblia.github.io
+# Tudnivalók a bibliaolvasó alkalmazásról
+
+## A program célja
+Ez a honlap segítséget kíván nyújtani azoknak, akik héberül vagy görögül még csak kezdő vagy középhaladó szinten olvassák a Bibliát. Ennek érdekében magyar nyelvű nyelvtani elemzéseket és egy (távolról sem tudományos igényű) kisszótárat találunk benne, így a szótári alakok visszaállítása és a körülbelüli jelentés pillanatok alatt megkapható. Természetesen komolyabb tanulmányozáshoz a fontosabb szavakat érdemes más szótárakban (akár könyvalakúban is) kikeresni. Ilyen _ingyenes (nyílt forrású), magyar nyelvű_ program a szerző legjobb tudása szerint a Biblia protestáns hagyományú szövegére nem létezik (fizetős magyar és ingyenes angol van, illetve az alexandriai szövegváltozathoz is készült ingyenes magyar oldal) ; ezért vágott bele ebbe a munkába szabadidejében. Fontos szempont volt még, hogy a fejezet- és versbeosztás ne zavarja a folyamatos olvasást, ezért azokat a margón találjuk.
+
+_A honlap használata nem helyettesítheti a stabil görög és héber nyelvtudást !_ Istennek hála ezért ma már teológiára sem kell beiratkozni, az interneten számos jó minőségű tananyag érhető el [görögül](http://freegreek.online/) és [héberül](http://freehebrew.online/) is. Nem mentség, hogy valaki azért nem tud görögül vagy héberül, mert nem pap, lelkész, pásztor stb.
+
+## Használat
+Miután kiválasztottuk az olvasni kívánt könyvet, fölül találjuk az eredeti nyelvű szöveget, alul pedig Károli fordítását. A fölső gombbal görgethetünk a fejezetek között. Valamelyik versre az egeret ráhúzva (érintőképernyőn bökve) a másik szövegdobozban kijelöli a megfelelő verset kék színnel. A program figyelembe veszi az eltérő versszámozásokat. Ha az eredeti nyelvű szövegben kiválasztunk egy szót, akkor azt pirossal kiemeli és megmutatja a szótárat. A héber és arám nyelvű szövegeknél a verset a kantillációnak megfelelően színezi, a melegebb színű kifejezések erősebben, a hidegebb színűek lazábban kapcsolódnak egymáshoz.
+
+A szótárban fölül a szótári alak és Strong-szám található. Utóbbira kattintva egy angol nyelvű szótárban bővebb információhoz juthatunk. A nyelvtani elemzés alatt látható a szavak magyar jelentése.
+
+_Vigyázat ! Ezeket a kifejezéseket nyelvi modell (azaz népszerű nevén mesterséges intelligencia) fordította ! Bár meglepően jól fordított, itt-ott előfordulhatnak tévedések, ne bízzunk vakon a jelentésben !_ Alul példákat látunk olyan igeversekre, amelyben az adott szó előfordul. A versszámozás itt az eredeti szöveg, és nem a Károli-Biblia beosztását követi. A példák sorrendje véletlenszerű.
+
+Ha bármelyik szóra rákattintunk, akkor a szótárat rögzítjük ; azaz hiába húzzuk rá az egeret másik szóra, azt a program nem fogja szótárazni. Ez hasznos, ha a szótárban található linkre szeretnénk kattintani. Kattintással ugyanakkor továbbra is átléphetünk egy másik szóra. A rögzítés föloldható a pirossal kiemelt szóra kattintva.
+
+A honlap mobileszközökre csak részben optimalizált: megjelenésében alkalmazkodik ugyan a kis képernyőkhöz, azonban az alkalmazott technológia sajátosságai miatt okostelefonon kissé lassabb működésre készüljünk: egy könyv első betöltése akár 15-30 másodperc is lehet !
+
+## A görög szöveg forrása
+A program a Textus Receptus ún. Editio regia, azaz 1550-es kiadását és Scrinever szövegváltozatát (az angol King James fordítás alapján visszakövetkeztetett görög szöveg) tartalmazza. Ahol a két szövegváltozat eltér, zöld kiemelést látunk, állóval az 1550-es kiadás, dőlttel Scrinever szövegét jelezve. A központozás és a bekezdések felosztása az 1550-es kiadást követi.
+
+A honlap szerzője tisztában van vele, hogy a TR sem tökéletes (különböző változatai között időnként érdekes eltérések vannak), azonban távolról sem annyira heterogén, mint a fősodratú tudomány által istenített alexandriai szövegek. Továbbá nincs hiteles bizonyítékunk arra, hogy az alexandriai szövegváltozat valóban régebbi lenne, mint a TR-ban olvasható bizánci szöveg (lásd pl. https://varadikaroli.hu/2024/05/22/sinai-kodex-1-resz/). Az eltérések listáját végigböngészve azt érzékelhetjük, mintha a véletlenszerű másolási hibákon felül a szöveg teológiai tartalmának (különösen Jézus istenségének kérdésében) tudatos gyengítése is célja lehetett (lásd https://nevtelenbiblia.blogspot.com/p/textus-receptus-vagy-westcott-hort.html). Akit pedig ezek az érvek nem győztek meg, magyar nyelven bátran tanulmányozhatja az alexandriai szöveget a katolikus bibliatársulat erre rendszeresített honlapján: https://ujszov.hu/. A Strong-számok és a nyelvtani elemzések Maurice A. Robinson munkáján alapulnak.
+
+## A héber szöveg forrása
+Az ószövetség esetén kevésbé vagyunk bajban, mert az alexandriai szövegváltozat héber nyelven csak töredékesen (kumráni tekercsek) maradt ránk, így azt senki nem próbálja alkalmazni. Görög fordításban ugyan ránk maradt (Szeptuaginta néven) azonban ezt a protestánsok egyelőre még (hála Istennek) kerülik. A meglehetősen istenellenes teológiát tartalmazó apokrif iratok és más nyalánkságok miatt kerülni javasolt (lásd https://varadikaroli.hu/2021/09/30/ismet-a-septuagintarol/). A héberül (és arámul) fönnmaradt iratok két fő szövegtípusba, a Ben Chayyim (Rabbinikus Biblia) és a Ben Asher (Leningrádi kódex) féle változatokba sorolhatók. Előbbi egy keresztyénné lett zsidó rabbi összeállítása az 1500-as évekből, utóbbi viszont teljesen zsidó hagyományú. Mivel alapanyagot csak utóbbiról találtam, ezért ez a szövegváltozat szerepel a programban. A két változat közötti eltérések marginálisak, az egy-két szó bizonytalanság a szöveg értelmét nem befolyásolja olyan mértékben, mint az újszövetségi görögben tapasztalható. A szövegben a _kötív_ olvasat szürke, a _qöré_ olvasat piros színnel szerepel. A nyelvtani elemzést az Open Scriptures Hebrew Bible projekt közreműködőinek köszönhetjük.
+
+## A magyar szöveg forrása
+Ez az oldal a Károli Biblia 1909-es revízió előtti utolsó kiadásán (1903-as) alapszik. Sajnos a szöveg szkennelése után számtalan téves karakterfelismerésből eredő hiba található benne, jobb minőségű szöveg előállítása még várat magára. Azért ez a fordítás került bele, mert az utolsó olyan kiadás, amely még teljes egészében a honlapon található hagyományos görög szövegen alapszik. Ha valakinek van kedve javítgatni rajta, itt teheti meg. A segítséget előre is köszönjük.
+
+## Az elkövető
+© Kerkovits Krisztián ◆ _kerkovitskrisztian@gmail.com_ ◆ Μόνω τῷ Θεῷ δόξα.
+
+A Biblia szövege közkincs, szabadon terjeszthető. A honlapon felhasznált adatbázisok a [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.hu) licensz alá tartoznak, a saját fejlesztésű programkód pedig az [MIT-0](https://github.com/aws/mit-0) licensz feltételei szerint hasznosítható.
