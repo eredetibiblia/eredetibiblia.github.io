@@ -51,9 +51,16 @@
     padding: 0;
 }
 
+*:lang(hu), *:lang(grc) {
+    font-family: 'gorog';
+}
+
+*:lang(hbo) {
+    font-family: 'heber';
+}
 
 body {
-    font-family: 'gorog', 'heber', ui-serif;
+    font-family: ui-serif;
     font-size: 20px;
     background-color: #dfd8c1;
     font-feature-settings: "swsh" 1;
@@ -182,6 +189,7 @@ a:hover {
     font-size: 10px;
     position: relative;
     bottom: 3px;
+    font-family: 'gorog';
 }
 
 .fejval {
@@ -349,8 +357,7 @@ a:hover {
 .bekezdes {
     color: #808080;
     font-size: 12px;
-    position: relative;
-    bottom: 6px;
+    vertical-align: 6px;
 }
 
 .kore {
@@ -404,6 +411,7 @@ a:hover {
     width: 15px;
     text-align: center;
     font-weight: bold;
+    font-family: 'gorog';
 }
 
 .gorgodoboz {
@@ -411,7 +419,7 @@ a:hover {
 }
 
 #szoveg *, #magyar *, .szotar * {
-    pointer-events: all;
+    pointer-events: auto;
 }
 
 #szotari {

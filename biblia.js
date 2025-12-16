@@ -69,7 +69,8 @@ function kijelol(event) {
             link.href = 'https://biblehub.com/' + (g ? 'greek/' : 'hebrew/') + nev + '.htm';
             link.target = "_blank";
         }
-        document.getElementById('szotari').appendChild(link)
+        link.lang = 'hu';
+        document.getElementById('szotari').appendChild(link);
         document.getElementById('elofordul').appendChild(pelda);
         document.getElementById('elofordul').appendChild(document.createTextNode(' (' + szotar[el.attributes['data-to'].value][2] + ' előfordulás)'));
         kavar(szotar[el.attributes['data-to'].value][3], 24).forEach((hely) => {
@@ -86,7 +87,11 @@ function kijelol(event) {
             document.getElementById('szakaszok').appendChild(szakasz);
         })
     } else {
-        document.getElementById('szotari').innerText = 'Nincs a szótárban';
+        let link = document.createElement('span');
+        link.lang = 'hu';
+        link.innerText = 'Nem szótárazható';
+        document.getElementById('szotari').innerText = '';
+        document.getElementById('szotari').appendChild(link);
         document.getElementById('jelentes').innerText = '';
         document.getElementById('elofordul').innerText = '';
     }
@@ -444,10 +449,10 @@ const szotarmeret = (function () {
         }
 
         gorgettyu.fogo.addEventListener('mousedown', huzkezd.bind(gorgettyu), {passive: true});
-        window.addEventListener('mousemove', huz.bind(gorgettyu));
+        window.addEventListener('mousemove', huz.bind(gorgettyu), {passive: false});
         window.addEventListener('mouseup', huzveg.bind(gorgettyu), {passive: true});
         gorgettyu.fogo.addEventListener('touchstart', huzkezd.bind(gorgettyu), {passive: true});
-        window.addEventListener('touchmove', huz.bind(gorgettyu));
+        window.addEventListener('touchmove', huz.bind(gorgettyu), {passive: false});
         window.addEventListener('touchend', huzveg.bind(gorgettyu), {passive: true});
 
         let f = function () {
