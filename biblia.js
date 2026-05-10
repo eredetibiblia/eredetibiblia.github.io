@@ -327,29 +327,40 @@ pelda.innerText = 'Példák:';
 const szotarmeret = (function () {
     let ezgordul = false;
     let indul = 0;
+    let ido = Date.now();
+    let sebesseg = 0;
 
     function huzkezd(event) {
         ezgordul = this;
-        this.style.pointerEvents = 'none';
-        this.style.userSelect = 'none';
+        this.parentNode.style.pointerEvents = 'none';
+        this.parentNode.style.userSelect = 'none';
         this.style.scrollBehavior = 'auto';
         indul = (event.clientY || event.clientY === 0) ? event.clientY : event.touches[0].clientY;
+        sebesseg = 0;
+        mozgat();
     }
 
     function huz(event) {
         if (!ezgordul) return;
         let ide = (event.clientY || event.clientY === 0) ? event.clientY : event.touches[0].clientY;
-        ezgordul.scrollTop += (ide - indul) / ezgordul.fogo.meret;
-        indul = ide;
+        sebesseg = (ide - indul) / 100;
+        ezgordul.fogo.style.transform = 'translateY(' + (ide - indul) + 'px)';
         event.preventDefault();
     }
 
     function huzveg() {
         if (!ezgordul) return;
-        ezgordul.style.pointerEvents = 'initial';
-        ezgordul.style.userSelect = 'initial';
+        ezgordul.parentNode.style.pointerEvents = 'initial';
+        ezgordul.parentNode.style.userSelect = 'initial';
         ezgordul.style.scrollBehavior = 'smooth';
+        ezgordul.fogo.style.transform = '';
         ezgordul = false;
+    }
+
+    function mozgat() {
+        if (!ezgordul) return;
+        ezgordul.scrollTop += (-ido + (ido = Date.now())) * sebesseg;
+        requestAnimationFrame(mozgat);
     }
 
     function atmeretez(gorgettyu) {
@@ -360,57 +371,17 @@ const szotarmeret = (function () {
         let doboz = gorgettyu.getBoundingClientRect();
         let magassag = gorgettyu.gorgodoboz.getBoundingClientRect().height;
         let eddiggorog = magassag - doboz.height;
-        let fogomeret = 60;//Math.pow(doboz.height, 2)/magassag;
-        let fogohely = doboz.height - fogomeret;
+        let fogomeret = 60;
+        fogo.style.top = (doboz.height - fogomeret) / 2 + 'px';
         if (gorgettyu.scrollTop > eddiggorog) {
             gorgettyu.scrollTop = eddiggorog;
         }
-
-        fogo.meret = fogohely / eddiggorog;
         fogo.style.height = `${fogomeret}px`;
         fogo.style.display = doboz.height < magassag ? '' : 'none';
-
-        if (gorgettyu.isIOS) {
-            fogo.style.left = getComputedStyle(gorgettyu).direction === 'ltr' ? '100%' : '0';
-            fogo.nextElementSibling.style.marginTop = doboz.height < magassag ? `-${fogomeret}px` : '0';
-            let z = 1 - 1 / (1 + fogo.meret);
-            fogo.style.transform = `
-        translateZ(${z}px)
-        scale(${1 - z})
-        translateX(${getComputedStyle(gorgettyu).direction === 'ltr' ? '-' : '+'}200px)
-      `;
-        } else {
-            fogo.style.transform = `
-         scale(${1 / fogo.meret})
-         matrix3d(
-           1, 0, 0, 0,
-           0, 1, 0, 0,
-           0, 0, 1, 0,
-           0, 0, 0, -1
-         )
-         translateZ(${-2 + 1 - 1 / fogo.meret}px)
-         translateX(${getComputedStyle(gorgettyu).direction === 'ltr' ? '-' : '+'}200px)
-      `;
-        }
     }
 
     function gorgosav(gorgettyu) {
-        if (getComputedStyle(document.body).transform === 'none') document.body.style.transform = 'translateZ(0)';
-        let fixdoboz = document.createElement('div');
-        fixdoboz.style.position = 'fixed';
-        fixdoboz.style.top = '0';
-        fixdoboz.style.width = '1px';
-        fixdoboz.style.height = '1px';
-        fixdoboz.style.zIndex = '1';
-        document.body.insertBefore(fixdoboz, document.body.firstChild);
-
-        gorgettyu.style.perspectiveOrigin = getComputedStyle(gorgettyu).direction === 'ltr' ? 'top right' : 'top left';
-        gorgettyu.style.transformStyle = 'preserve-3d';
-        gorgettyu.style.perspective = '1px';
-
         let gorgodoboz = document.createElement('div');
-        gorgodoboz.style.perspectiveOrigin = getComputedStyle(gorgettyu).direction === 'ltr' ? 'top right' : 'top left';
-        gorgodoboz.style.transformStyle = 'preserve-3d';
         gorgodoboz.style.width = `calc(100% + ${gorgettyu.offsetWidth - gorgettyu.clientWidth}px)`;
         gorgodoboz.style.position = 'absolute';
         gorgodoboz.style.pointerEvents = 'none';
@@ -423,30 +394,13 @@ const szotarmeret = (function () {
         fogo.classList.add('fogo');
         fogo.style.pointerEvents = 'initial';
         fogo.style.position = 'absolute';
-        fogo.style.transformOrigin = getComputedStyle(gorgettyu).direction === 'ltr' ? 'top right' : 'top left';
-        fogo.style.top = '0px';
         getComputedStyle(gorgettyu).direction === 'ltr' ? (fogo.style.right = '0') : (fogo.style.left = '0');
         fogo.innerText = '↑ \u2766 ↓';
-        gorgodoboz.insertBefore(fogo, gorgodoboz.firstChild);
+        fogo.style.transitionDuration = '.1s';
+        gorgettyu.parentNode.appendChild(fogo);
+        gorgettyu.parentNode.style.position = 'relative';
         gorgettyu.fogo = fogo;
         gorgettyu.gorgodoboz = gorgodoboz;
-
-        if (getComputedStyle(gorgettyu).webkitOverflowScrolling) {
-            gorgettyu.isIOS = true;
-            fogo.style.left = getComputedStyle(gorgettyu).direction === 'ltr' ? '100%' : '0';
-            fogo.style.position = '-webkit-sticky';
-            gorgodoboz.style.perspective = '1px';
-            gorgodoboz.style.height = '';
-            gorgodoboz.style.width = '';
-            gorgodoboz.style.position = '';
-            Array.from(gorgettyu.children)
-                .filter(function (e) {
-                    return e !== gorgodoboz;
-                })
-                .forEach(function (e) {
-                    gorgodoboz.appendChild(e);
-                });
-        }
 
         gorgettyu.fogo.addEventListener('mousedown', huzkezd.bind(gorgettyu), {passive: true});
         window.addEventListener('mousemove', huz.bind(gorgettyu), {passive: false});
